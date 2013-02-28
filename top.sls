@@ -7,5 +7,5 @@ base:
         - postgresql
         - nginx
         - uwsgi
-        - tc2012
-        - sog
+        - project1
+        - project2
