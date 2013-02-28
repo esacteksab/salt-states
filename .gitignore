@@ -1,0 +1,8 @@
+id_rsa*
+*.pub
+venv
+*.pyc
+*.key
+*.crt
+tc2012
+sog
