@@ -95,7 +95,6 @@ SUCCESS
      server {
 
     -   listen 80;
-    +   listen 204.62.12.92:80;
         #listen 443 default ssl;
 
         #ssl_certificate /etc/ssl/certs/### Need path to cert .pem
@@ -103,9 +102,9 @@ SUCCESS
 
         # Make site accessible from http://localhost/
     -   server_name localhost
-    +   server_name bayareatattooconvention.com www.bayareatattooconvention.com;
+    +   server_name project2.com www.project2.com;
         location /admin {
-            rewrite (.*) https://www.bayareatattooconvention.com/$1 permanent;
+            rewrite (.*) https://www.project2.com/$1 permanent;
         }
 
                        group: www-data
