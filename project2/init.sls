@@ -58,7 +58,7 @@ include:
             - group
         - mode: 755
         - require:
-            - file: project-root
+            - file: {{ pillar["project2-path"] }}-project-root
 
 /usr/share/nginx/project2/venv:
     virtualenv.manage:
@@ -66,7 +66,7 @@ include:
         - clear: false
         - require:
             - pkg: python-virtualenv
-            - file: project-root
+            - file: {{ pillar["project2-path"] }}-project-root
 
 {{ pillar["project2-path"] }}-settings-dir:
     file:
@@ -80,7 +80,7 @@ include:
         - mode: 755
         - makedirs: true
         - require:
-            - file: project-root
+            - file: {{ pillar["project2-path"] }}-project-root
 
 {{ pillar["project2-path"] }}-prod-settings.py:
     file.managed:
@@ -88,7 +88,7 @@ include:
         - source: salt://project2/prod.py
         - template: jinja
         - require:
-            - file: settings-dir
+            - file: {{ pillar["project2-path"] }}-settings-dir
 
 {{ pillar["project2-path"] }}-uwsgi-app:
     file.managed:
