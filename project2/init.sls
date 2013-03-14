@@ -22,7 +22,7 @@ include:
         - owner: {{ pillar['project2-dbuser'] }}
         - runas: postgres
         - require:
-            - postgres_user: project2-djangouser
+            - postgres_user: {{ pillar["project2-path"] }}-djangouser
 
 {{ pillar["project2-path"] }}-project-root:
     file:
@@ -110,7 +110,7 @@ include:
         - require:
             - file: /etc/uwsgi/apps-available/project2.ini
 
-{{ pillar["project2-path"] }} nginx-conf:
+{{ pillar["project2-path"] }}-nginx-conf:
     file.managed:
         - name: /etc/nginx/sites-available/project2.conf
         - source: salt://project2/project2.conf
@@ -127,4 +127,4 @@ include:
         - target: /etc/nginx/sites-available/project2.conf
         - force: false
         - require:
-            - file: nginx-conf
+            - file: {{ pillar["project2-path"] }}-nginx-conf:
